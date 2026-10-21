@@ -4,7 +4,7 @@
 # ============================================================================
 
 # ---- Étape 1 : compilation de l'interface React ----------------------------
-FROM node:22-slim AS interface
+FROM node:24-slim AS interface
 WORKDIR /interface
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci --no-audit --no-fund
