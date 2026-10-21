@@ -1,0 +1,8 @@
+# Force les fins de ligne « Unix » (LF) : Windows les remplace par défaut (CRLF),
+# ce qui peut casser les fichiers lus par Docker et Render.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.webp binary

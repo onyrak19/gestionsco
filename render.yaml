@@ -1,0 +1,42 @@
+# Blueprint Render : https://render.com/docs/blueprint-spec
+# Crée la base PostgreSQL gratuite ET le site web (offre gratuite).
+# Région : Singapour (la plus proche de Madagascar parmi Oregon, Ohio, Virginia, Frankfurt, Singapore).
+# Le site et la base DOIVENT être dans la même région (sinon l'adresse privée de la base ne fonctionne pas).
+
+databases:
+  - name: gestionsco-db
+    plan: free
+    region: singapore
+    databaseName: gestion_scolaire
+    user: gestion_scolaire
+    ipAllowList: []          # base accessible seulement depuis le site (réseau privé de Render)
+
+services:
+  - type: web
+    name: gestionsco
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/ping/
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: gestionsco-db
+          property: connectionString
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: RESEAU_LOCAL
+        value: "False"
+      - key: TIME_ZONE
+        value: Indian/Antananarivo
+      - key: DEVISE
+        value: Ar
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        sync: false          # Render vous le demandera à la création (jamais dans le dépôt)
+      - key: ADMIN_RESET_PASSWORD
+        value: "False"

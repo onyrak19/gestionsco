@@ -1,0 +1,19 @@
+# Secrets et fichiers locaux : jamais dans l'image
+**/.env
+**/.env.*
+!**/.env.example
+.git
+.gitignore
+**/__pycache__
+**/*.pyc
+**/venv
+**/.venv
+backend/db.sqlite3
+backend/media
+backend/staticfiles
+frontend/node_modules
+frontend/build
+*.zip
+README.md
+DEPLOY.md
+lancer_reseau.py

@@ -1,0 +1,4 @@
+# Seulement si vous utilisez MySQL en local (DB_ENGINE=mysql dans backend/.env) :
+#   pip install -r requirements-mysql.txt
+-r requirements.txt
+mysqlclient==2.3.0
